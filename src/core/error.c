@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pleblond <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 00:45:10 by pleblond          #+#    #+#             */
-/*   Updated: 2025/01/30 00:45:10 by pleblond         ###   ########.fr       */
+/*   Created: 2025/04/21 03:01:16 by pleblond          #+#    #+#             */
+/*   Updated: 2025/04/21 03:01:16 by pleblond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-# include "libft.h"
-# include <sys/wait.h> 
-# include <errno.h>
-
-typedef	struct s_args
+int	pipe_error(int fd_in)
 {
-	int		c;
-	char	**v;
-	bool	here_doc;
-}				t_args;
+	close(fd_in);
+	ft_putstr_fd(strerror(errno), STDERR_FILENO);
+	return (-1);
+}
 
-#endif
+int	fork_error()
+{
+	if ()
+}
