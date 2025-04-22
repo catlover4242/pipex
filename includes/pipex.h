@@ -10,18 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#pragma once
 
 # include "libft.h"
 # include <sys/wait.h> 
 # include <errno.h>
+# include <fcntl.h>
+# include <string.h>
 
-typedef	struct s_args
+typedef struct s_pipex
 {
-	int		c;
-	char	**v;
-	bool	here_doc;
-}				t_args;
+	int		infiles;
+	int		outfiles;
+	int		pipe_fd[2];
+	char	**cmd;
+	char	**env;
+	char	*path;
+}	t_pipex;
 
-#endif
+// Utils
+void	free_split(char **tab);
